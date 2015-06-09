@@ -13,14 +13,19 @@
 
 	if($_FILES){
 
-		# get the temp name, and the filename
-		$tmp      = $_FILES['file']['tmp_name'][0];
-		$filename = $_FILES['file']['name'][0];
+		$files = Upload::to_folder('uploads/');
 
-		# move the files into the "uploads" folder
-		move_uploaded_file($tmp, 'uploads/'.$filename);
+		// print_r($files);
 
-		URL::redirect('uploads/'.$filename);
+		if($files[0]['error_message'] == false){
+
+			
+			URL::redirect($files[0]];filepath]);
+
+		}else{
+
+			echo $files[0]['error_message'];
+		}
 	}
 
 
